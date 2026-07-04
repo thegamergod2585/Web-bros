@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Bros - Games & Seed Finder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Web Bros - Games & Seed Finder</h1>
+            <p>Explore Minecraft seeds and play fun games!</p>
+        </header>
+
+        <nav class="main-nav">
+            <button class="nav-btn active" onclick="showSection('seeds')">🌍 Seed Finder</button>
+            <button class="nav-btn" onclick="showSection('games')">🎯 Games</button>
+        </nav>
+
+        <!-- SEEDS SECTION -->
+        <section id="seeds-section" class="section active">
+            <section class="search-section">
+                <div class="search-box">
+                    <input 
+                        type="text" 
+                        id="seedInput" 
+                        placeholder="Enter a seed or search term..." 
+                        class="seed-input"
+                    >
+                    <button onclick="searchSeeds()" class="search-btn">Search</button>
+                </div>
+                <div class="filters">
+                    <label>
+                        <input type="checkbox" id="filterSpawn" value="spawn">
+                        Good Spawn
+                    </label>
+                    <label>
+                        <input type="checkbox" id="filterVillage" value="village">
+                        Near Villages
+                    </label>
+                    <label>
+                        <input type="checkbox" id="filterStructures" value="structures">
+                        Many Structures
+                    </label>
+                </div>
+            </section>
+
+            <section class="results-section">
+                <h2>Featured Seeds</h2>
+                <div id="seedsContainer" class="seeds-grid">
+                    <!-- Seeds will be populated here -->
+                </div>
+            </section>
+        </section>
+
+        <!-- GAMES SECTION -->
+        <section id="games-section" class="section">
+            <div class="games-hub">
+                <h2>🎯 Fun Games Hub</h2>
+                
+                <!-- Game 1: Flappy Bird Clone -->
+                <div class="game-card">
+                    <h3>🐦 Flappy Bird</h3>
+                    <p>Navigate through the pipes without crashing!</p>
+                    <button onclick="startFlappyBird()" class="game-btn">Play</button>
+                    <div id="flappy-game" style="display:none;">
+                        <canvas id="flappyCanvas" width="320" height="480" style="border: 2px solid #4caf50; background: #87CEEB;"></canvas>
+                        <p style="text-align: center; margin-top: 10px;">Score: <span id="flappy-score">0</span> | Click to flap! Press R to restart</p>
+                    </div>
+                </div>
+
+                <!-- Game 2: Snake Game -->
+                <div class="game-card">
+                    <h3>🐍 Snake Game</h3>
+                    <p>Eat food and grow without hitting the walls!</p>
+                    <button onclick="startSnakeGame()" class="game-btn">Play</button>
+                    <div id="snake-game" style="display:none;">
+                        <canvas id="snakeCanvas" width="320" height="320" style="border: 2px solid #4caf50; background: #000;"></canvas>
+                        <p style="text-align: center; margin-top: 10px;">Score: <span id="snake-score">0</span> | Use arrow keys to move</p>
+                    </div>
+                </div>
+
+                <!-- Game 3: Memory Match -->
+                <div class="game-card">
+                    <h3>🧠 Memory Match</h3>
+                    <p>Match pairs of cards! Test your memory!</p>
+                    <button onclick="startMemoryGame()" class="game-btn">Play</button>
+                    <div id="memory-game" style="display:none;">
+                        <div class="memory-grid" id="memoryGrid"></div>
+                        <p style="text-align: center; margin-top: 10px;">Matches: <span id="memory-matches">0</span> / 8</p>
+                    </div>
+                </div>
+
+                <!-- Game 4: Number Guessing -->
+                <div class="game-card">
+                    <h3>🎲 Number Guess</h3>
+                    <p>Guess the random number between 1-100!</p>
+                    <button onclick="startGuessingGame()" class="game-btn">Play</button>
+                    <div id="guessing-game" style="display:none;">
+                        <input type="number" id="guessInput" placeholder="Enter a number (1-100)" min="1" max="100">
+                        <button onclick="submitGuess()" class="game-btn" style="width: 100%; margin-top: 10px;">Submit</button>
+                        <p id="guessResult" style="text-align: center; margin-top: 10px;"></p>
+                        <p style="text-align: center;">Attempts: <span id="guessAttempts">0</span></p>
+                    </div>
+                </div>
+
+                <!-- Game 5: Color Match -->
+                <div class="game-card">
+                    <h3>🎨 Color Match</h3>
+                    <p>Click the button that matches the color name!</p>
+                    <button onclick="startColorGame()" class="game-btn">Play</button>
+                    <div id="color-game" style="display:none;">
+                        <p style="font-size: 24px; font-weight: bold; text-align: center; margin: 20px 0;" id="colorText"></p>
+                        <div class="color-buttons" id="colorButtons"></div>
+                        <p style="text-align: center; margin-top: 10px;">Score: <span id="color-score">0</span></p>
+                    </div>
+                </div>
+
+                <!-- Game 6: Quick Math -->
+                <div class="game-card">
+                    <h3>➕ Quick Math</h3>
+                    <p>Solve math problems as fast as you can!</p>
+                    <button onclick="startMathGame()" class="game-btn">Play</button>
+                    <div id="math-game" style="display:none;">
+                        <p style="font-size: 28px; font-weight: bold; text-align: center; margin: 20px 0;" id="mathProblem"></p>
+                        <input type="number" id="mathInput" placeholder="Enter answer">
+                        <button onclick="submitMathAnswer()" class="game-btn" style="width: 100%; margin-top: 10px;">Submit</button>
+                        <p id="mathResult" style="text-align: center; margin-top: 10px;"></p>
+                        <p style="text-align: center;">Score: <span id="math-score">0</span> | Time: <span id="math-time">30</span>s</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Web Bros | Games & Seed Finder | Have Fun! 🎮</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="games.js"></script>
+</body>
+</html>

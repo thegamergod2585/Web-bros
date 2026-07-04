@@ -58,77 +58,89 @@
         <section id="games-section" class="section">
             <div class="games-hub">
                 <h2>🎯 Fun Games Hub</h2>
-                
-                <!-- Game 1: Flappy Bird Clone -->
-                <div class="game-card">
-                    <h3>🐦 Flappy Bird</h3>
-                    <p>Navigate through the pipes without crashing!</p>
-                    <button onclick="startFlappyBird()" class="game-btn">Play</button>
-                    <div id="flappy-game" style="display:none;">
-                        <canvas id="flappyCanvas" width="320" height="480" style="border: 2px solid #4caf50; background: #87CEEB;"></canvas>
-                        <p style="text-align: center; margin-top: 10px;">Score: <span id="flappy-score">0</span> | Click to flap! Press R to restart</p>
+                <div class="games-grid">
+                    
+                    <!-- Game 1: Flappy Bird Clone -->
+                    <div class="game-card">
+                        <h3>🐦 Flappy Bird</h3>
+                        <p>Navigate through the pipes without crashing!</p>
+                        <div id="flappy-game" style="display:none;" class="game-display">
+                            <canvas id="flappyCanvas" width="320" height="480" style="border: 2px solid #4caf50; background: #87CEEB; display: block; margin: 0 auto;"></canvas>
+                            <p style="text-align: center; margin-top: 10px;">Score: <span id="flappy-score">0</span></p>
+                            <p style="text-align: center; color: #999; font-size: 0.9em;">Click or Space to flap</p>
+                            <button onclick="closeFlappyGame()" class="close-btn">Close Game</button>
+                        </div>
+                        <button onclick="startFlappyBird()" class="game-btn" id="flappy-btn">▶ Play Flappy Bird</button>
                     </div>
-                </div>
 
-                <!-- Game 2: Snake Game -->
-                <div class="game-card">
-                    <h3>🐍 Snake Game</h3>
-                    <p>Eat food and grow without hitting the walls!</p>
-                    <button onclick="startSnakeGame()" class="game-btn">Play</button>
-                    <div id="snake-game" style="display:none;">
-                        <canvas id="snakeCanvas" width="320" height="320" style="border: 2px solid #4caf50; background: #000;"></canvas>
-                        <p style="text-align: center; margin-top: 10px;">Score: <span id="snake-score">0</span> | Use arrow keys to move</p>
+                    <!-- Game 2: Snake Game -->
+                    <div class="game-card">
+                        <h3>🐍 Snake Game</h3>
+                        <p>Eat food and grow without hitting the walls!</p>
+                        <div id="snake-game" style="display:none;" class="game-display">
+                            <canvas id="snakeCanvas" width="320" height="320" style="border: 2px solid #4caf50; background: #000; display: block; margin: 0 auto;"></canvas>
+                            <p style="text-align: center; margin-top: 10px;">Score: <span id="snake-score">0</span></p>
+                            <p style="text-align: center; color: #999; font-size: 0.9em;">Use arrow keys to move</p>
+                            <button onclick="closeSnakeGame()" class="close-btn">Close Game</button>
+                        </div>
+                        <button onclick="startSnakeGame()" class="game-btn" id="snake-btn">▶ Play Snake</button>
                     </div>
-                </div>
 
-                <!-- Game 3: Memory Match -->
-                <div class="game-card">
-                    <h3>🧠 Memory Match</h3>
-                    <p>Match pairs of cards! Test your memory!</p>
-                    <button onclick="startMemoryGame()" class="game-btn">Play</button>
-                    <div id="memory-game" style="display:none;">
-                        <div class="memory-grid" id="memoryGrid"></div>
-                        <p style="text-align: center; margin-top: 10px;">Matches: <span id="memory-matches">0</span> / 8</p>
+                    <!-- Game 3: Memory Match -->
+                    <div class="game-card">
+                        <h3>🧠 Memory Match</h3>
+                        <p>Match pairs of cards! Test your memory!</p>
+                        <div id="memory-game" style="display:none;" class="game-display">
+                            <div class="memory-grid" id="memoryGrid"></div>
+                            <p style="text-align: center; margin-top: 10px;">Matches: <span id="memory-matches">0</span> / 8</p>
+                            <button onclick="closeMemoryGame()" class="close-btn">Close Game</button>
+                        </div>
+                        <button onclick="startMemoryGame()" class="game-btn" id="memory-btn">▶ Play Memory Match</button>
                     </div>
-                </div>
 
-                <!-- Game 4: Number Guessing -->
-                <div class="game-card">
-                    <h3>🎲 Number Guess</h3>
-                    <p>Guess the random number between 1-100!</p>
-                    <button onclick="startGuessingGame()" class="game-btn">Play</button>
-                    <div id="guessing-game" style="display:none;">
-                        <input type="number" id="guessInput" placeholder="Enter a number (1-100)" min="1" max="100">
-                        <button onclick="submitGuess()" class="game-btn" style="width: 100%; margin-top: 10px;">Submit</button>
-                        <p id="guessResult" style="text-align: center; margin-top: 10px;"></p>
-                        <p style="text-align: center;">Attempts: <span id="guessAttempts">0</span></p>
+                    <!-- Game 4: Number Guessing -->
+                    <div class="game-card">
+                        <h3>🎲 Number Guess</h3>
+                        <p>Guess the random number between 1-100!</p>
+                        <div id="guessing-game" style="display:none;" class="game-display">
+                            <p style="text-align: center; font-size: 1.1em; margin: 15px 0;">Guess a number between 1-100</p>
+                            <input type="number" id="guessInput" placeholder="Enter a number (1-100)" min="1" max="100">
+                            <button onclick="submitGuess()" class="game-btn" style="width: 100%; margin-top: 10px;">Submit Guess</button>
+                            <p id="guessResult" style="text-align: center; margin-top: 10px;"></p>
+                            <p style="text-align: center;">Attempts: <span id="guessAttempts">0</span></p>
+                            <button onclick="closeGuessingGame()" class="close-btn">Close Game</button>
+                        </div>
+                        <button onclick="startGuessingGame()" class="game-btn" id="guessing-btn">▶ Play Number Guess</button>
                     </div>
-                </div>
 
-                <!-- Game 5: Color Match -->
-                <div class="game-card">
-                    <h3>🎨 Color Match</h3>
-                    <p>Click the button that matches the color name!</p>
-                    <button onclick="startColorGame()" class="game-btn">Play</button>
-                    <div id="color-game" style="display:none;">
-                        <p style="font-size: 24px; font-weight: bold; text-align: center; margin: 20px 0;" id="colorText"></p>
-                        <div class="color-buttons" id="colorButtons"></div>
-                        <p style="text-align: center; margin-top: 10px;">Score: <span id="color-score">0</span></p>
+                    <!-- Game 5: Color Match -->
+                    <div class="game-card">
+                        <h3>🎨 Color Match</h3>
+                        <p>Click the button that matches the color name!</p>
+                        <div id="color-game" style="display:none;" class="game-display">
+                            <p style="font-size: 24px; font-weight: bold; text-align: center; margin: 20px 0;" id="colorText"></p>
+                            <div class="color-buttons" id="colorButtons"></div>
+                            <p style="text-align: center; margin-top: 10px;">Score: <span id="color-score">0</span></p>
+                            <button onclick="closeColorGame()" class="close-btn">Close Game</button>
+                        </div>
+                        <button onclick="startColorGame()" class="game-btn" id="color-btn">▶ Play Color Match</button>
                     </div>
-                </div>
 
-                <!-- Game 6: Quick Math -->
-                <div class="game-card">
-                    <h3>➕ Quick Math</h3>
-                    <p>Solve math problems as fast as you can!</p>
-                    <button onclick="startMathGame()" class="game-btn">Play</button>
-                    <div id="math-game" style="display:none;">
-                        <p style="font-size: 28px; font-weight: bold; text-align: center; margin: 20px 0;" id="mathProblem"></p>
-                        <input type="number" id="mathInput" placeholder="Enter answer">
-                        <button onclick="submitMathAnswer()" class="game-btn" style="width: 100%; margin-top: 10px;">Submit</button>
-                        <p id="mathResult" style="text-align: center; margin-top: 10px;"></p>
-                        <p style="text-align: center;">Score: <span id="math-score">0</span> | Time: <span id="math-time">30</span>s</p>
+                    <!-- Game 6: Quick Math -->
+                    <div class="game-card">
+                        <h3>➕ Quick Math</h3>
+                        <p>Solve math problems as fast as you can (30 seconds)!</p>
+                        <div id="math-game" style="display:none;" class="game-display">
+                            <p style="font-size: 28px; font-weight: bold; text-align: center; margin: 20px 0;" id="mathProblem"></p>
+                            <input type="number" id="mathInput" placeholder="Enter answer">
+                            <button onclick="submitMathAnswer()" class="game-btn" style="width: 100%; margin-top: 10px;">Submit Answer</button>
+                            <p id="mathResult" style="text-align: center; margin-top: 10px;"></p>
+                            <p style="text-align: center;">Score: <span id="math-score">0</span> | Time: <span id="math-time">30</span>s</p>
+                            <button onclick="closeMathGame()" class="close-btn">Close Game</button>
+                        </div>
+                        <button onclick="startMathGame()" class="game-btn" id="math-btn">▶ Play Quick Math</button>
                     </div>
+
                 </div>
             </div>
         </section>
